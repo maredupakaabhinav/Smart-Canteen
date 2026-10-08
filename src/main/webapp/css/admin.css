@@ -1,0 +1,80 @@
+/* ==========================================================
+   SMART CANTEEN - admin panel (top bar + sidebar layout)
+   ========================================================== */
+
+.admin-topbar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 0 24px; min-height: 60px;
+    background: var(--navy-900); border-bottom: 3px solid var(--orange);
+    position: sticky; top: 0; z-index: 50;
+}
+.admin-user { display: flex; align-items: center; gap: 14px; color: #cfd9ea; font-size: 0.92rem; }
+.admin-user small { color: #8ea2c6; }
+
+.admin-layout { display: grid; grid-template-columns: 208px 1fr; min-height: calc(100vh - 63px); }
+
+.sidebar { background: var(--navy-800); padding: 20px 12px; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 4px; position: sticky; top: 84px; }
+.sidebar-nav a {
+    color: #cfd9ea; padding: 11px 14px; border-radius: 6px; font-weight: 500;
+    border-left: 3px solid transparent;
+}
+.sidebar-nav a:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.sidebar-nav a.active { background: rgba(245, 130, 32, 0.18); color: #fff; border-left-color: var(--orange); }
+.sidebar-nav a.sidebar-logout { margin-top: 18px; border: 1px solid rgba(255, 255, 255, 0.2); text-align: center; }
+.sidebar-nav a.sidebar-logout:hover { background: var(--red); border-color: var(--red); }
+
+.admin-main { padding: 28px 24px 56px; min-width: 0; }
+
+/* admin tables are wide, so use tighter cells */
+.admin-main .data-table { font-size: 0.88rem; }
+.admin-main .data-table th, .admin-main .data-table td { padding: 10px; }
+.admin-main .data-table td:first-child { white-space: nowrap; }
+.date-cell { white-space: nowrap; }
+.admin-title { margin: 0; font-size: 1.7rem; color: var(--navy-800); }
+.admin-subtitle { margin: 4px 0 22px; color: var(--muted); }
+.admin-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* stat cards use the shared classes from menu.css, so repeat the few we need */
+.stat-card { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; color: var(--text); border-top: 3px solid var(--navy-600); transition: transform 0.15s, box-shadow 0.15s; }
+a.stat-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(11, 36, 71, 0.12); color: var(--text); }
+.stat-card-accent { border-top-color: var(--orange); }
+.stat-icon { font-size: 1.5rem; }
+.stat-value { font-size: 2rem; font-weight: 800; color: var(--navy-800); line-height: 1.1; }
+.stat-label { color: var(--muted); font-size: 0.88rem; }
+
+.filter-buttons { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.filter-btn {
+    padding: 7px 16px; border: 1px solid #b9c4d6; border-radius: 999px; background: #fff;
+    color: var(--navy-700); font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.15s;
+}
+.filter-btn:hover { border-color: var(--orange-dark); color: var(--orange-dark); }
+.filter-btn.active { background: var(--navy-700); border-color: var(--navy-700); color: #fff; }
+
+.availability { font-size: 0.75rem; font-weight: 700; }
+.food-cell { display: flex; align-items: center; gap: 12px; min-width: 220px; }
+.food-cell-icon { font-size: 1.8rem; }
+.action-group { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.action-group form { margin: 0; }
+.status-form { display: flex; gap: 6px; align-items: center; margin: 0; }
+.status-form select { min-width: 120px; }
+.items-cell { min-width: 150px; }
+
+.form-card { max-width: 640px; }
+
+/* below 1100px the sidebar becomes a bar at the top, so the tables get the full width */
+@media (max-width: 1100px) {
+    .admin-layout { grid-template-columns: minmax(0, 1fr); }
+    .sidebar { min-width: 0; }
+    .sidebar { padding: 8px 12px; }
+    .sidebar-nav { flex-direction: row; overflow-x: auto; position: static; gap: 6px; }
+    .sidebar-nav a { white-space: nowrap; border-left: none; border-bottom: 3px solid transparent; padding: 9px 12px; }
+    .sidebar-nav a.active { border-bottom-color: var(--orange); }
+    .sidebar-nav a.sidebar-logout { margin-top: 0; }
+    .admin-main { padding: 22px 16px 48px; }
+}
+
+@media (max-width: 640px) {
+    .admin-topbar { padding: 8px 16px; }
+    .admin-user-name { display: none; }
+}

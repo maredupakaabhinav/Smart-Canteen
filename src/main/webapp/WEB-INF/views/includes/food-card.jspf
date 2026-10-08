@@ -1,0 +1,42 @@
+<%-- One food card. It is pasted into the page inside a <c:forEach var="food" ...> loop,
+     so the page that includes it must declare the c: and fmt: tag libraries. --%>
+<article class="food-card ${food.available ? '' : 'is-unavailable'}"
+         data-name="<c:out value='${food.name}'/>"
+         data-category="<c:out value='${food.category}'/>">
+    <div class="food-image">
+        <c:choose>
+            <c:when test="${not empty food.image}">
+                <img src="<c:out value='${food.image}'/>" alt="<c:out value='${food.name}'/>"
+                     data-icon="${food.icon}">
+            </c:when>
+            <c:otherwise>
+                <span class="food-icon" aria-hidden="true">${food.icon}</span>
+            </c:otherwise>
+        </c:choose>
+    </div>
+    <div class="food-body">
+        <div class="food-meta">
+            <span class="tag"><c:out value="${food.category}"/></span>
+            <c:choose>
+                <c:when test="${food.available}"><span class="availability ok">Available</span></c:when>
+                <c:otherwise><span class="availability off">Currently Unavailable</span></c:otherwise>
+            </c:choose>
+        </div>
+        <h3 class="food-name"><c:out value="${food.name}"/></h3>
+        <p class="food-desc"><c:out value="${food.description}"/></p>
+        <div class="food-footer">
+            <span class="price">&#8377;<fmt:formatNumber value="${food.price}" pattern="#,##0.00"/></span>
+            <c:choose>
+                <c:when test="${not food.available}">
+                    <button type="button" class="btn btn-primary btn-sm" disabled>Unavailable</button>
+                </c:when>
+                <c:when test="${loggedInUser.role == 'STUDENT'}">
+                    <button type="button" class="btn btn-primary btn-sm btn-add" data-food-id="${food.foodId}">Add to Cart</button>
+                </c:when>
+                <c:otherwise>
+                    <a class="btn btn-outline btn-sm" href="${ctx}/login">Login to Order</a>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </div>
+</article>

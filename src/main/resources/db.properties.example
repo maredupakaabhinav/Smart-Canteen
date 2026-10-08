@@ -1,0 +1,8 @@
+# Alternative to environment variables:
+# copy this file to  db.properties  (same folder), fill in the values and rebuild the WAR.
+# db.properties is ignored by .gitignore so the password is never committed.
+# Environment variables (DB_URL, DB_USERNAME, DB_PASSWORD) always win over this file.
+
+DB_URL=jdbc:mysql://localhost:3306/smart_canteen?useSSL=false&allowPublicKeyRetrieval=true
+DB_USERNAME=
+DB_PASSWORD=

@@ -1,0 +1,7 @@
+target/
+.env
+src/main/resources/db.properties
+*.class
+.idea/
+.vscode/
+*.iml

@@ -1,0 +1,70 @@
+/* ==========================================================
+   SMART CANTEEN - login and register pages
+   ========================================================== */
+
+body { background: var(--navy-900); }
+
+.auth-page { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+
+/* ---------- left: project information ---------- */
+.auth-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 36px 48px;
+    color: #fff;
+    background: var(--navy-900);
+    border-right: 4px solid var(--orange);
+}
+.auth-info-body h1 { font-size: 2.4rem; margin: 18px 0 10px; }
+.auth-info-body p { color: #b9c8e2; max-width: 440px; }
+.auth-points { list-style: none; padding: 0; margin: 20px 0 0; }
+.auth-points li { padding: 5px 0 5px 24px; position: relative; color: #dbe5f5; }
+.auth-points li::before { content: "\2713"; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+
+.auth-code {
+    background: #0e2140;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius);
+    font-size: 0.82rem;
+}
+
+/* ---------- right: the form ---------- */
+.auth-form-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+    background: var(--bg);
+}
+.auth-card { width: 100%; max-width: 440px; margin: 0; padding: 32px; }
+.auth-card h2 { margin: 0; font-size: 1.6rem; color: var(--navy-800); }
+.auth-card > .muted { margin: 4px 0 20px; }
+
+.segmented { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #c4cddc; border-radius: 8px; overflow: hidden; }
+.segment { margin: 0 !important; cursor: pointer; }
+.segment input { position: absolute; opacity: 0; pointer-events: none; }
+.segment span {
+    display: block;
+    padding: 10px 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--navy-700);
+    background: #fff;
+    transition: background 0.15s, color 0.15s;
+}
+.segment + .segment span { border-left: 1px solid #c4cddc; }
+.segment input:checked + span { background: var(--navy-700); color: #fff; }
+.segment input:focus-visible + span { outline: 3px solid rgba(245, 130, 32, 0.6); outline-offset: -3px; }
+
+.auth-links { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 20px; font-size: 0.92rem; }
+
+@media (max-width: 860px) {
+    .auth-page { grid-template-columns: 1fr; }
+    .auth-info { padding: 24px 20px; border-right: none; border-bottom: 4px solid var(--orange); gap: 16px; }
+    .auth-info-body h1 { font-size: 1.8rem; margin-top: 12px; }
+    .auth-code { display: none; }
+    .auth-card { padding: 24px 20px; }
+}
