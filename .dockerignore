@@ -1,0 +1,6 @@
+target/
+.git/
+docs/
+*.md
+.env
+src/main/resources/db.properties
